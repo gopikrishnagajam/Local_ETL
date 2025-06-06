@@ -16,3 +16,4 @@ This project extracts, transforms, and loads Netflix title data from a CSV file 
 2. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
+   ```
