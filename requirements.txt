@@ -1,4 +1,4 @@
-"pandas",
-"sqlalchemy",
-"psycopg2",
-"schedule"
+pandas
+sqlalchemy
+psycopg2
+schedule

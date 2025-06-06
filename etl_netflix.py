@@ -30,7 +30,7 @@ def run_etl():
     # Clean
     df.drop_duplicates(inplace=True)
     df.fillna('Unknown', inplace=True)
-    df['date_added'] = pd.to_datetime(df['date_added'], format='%B %d, %Y', errors='coerce')
+    df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
     df[['duration_int', 'duration_type']] = df['duration'].str.extract(r'(\d+)\s*(\w+)')
     df['duration_int'] = df['duration_int'].fillna(0).astype(int)
 
@@ -44,8 +44,9 @@ def run_etl():
     else:
         logging.info("No new records to insert.")
 
-schedule.every().day.at("10:00").do(run_etl)
+if __name__ == "__main__":
+    schedule.every().day.at("10:00").do(run_etl)
 
-while True:
-    schedule.run_pending()
-    time.sleep(60)
+    while True:
+        schedule.run_pending()
+        time.sleep(60)
